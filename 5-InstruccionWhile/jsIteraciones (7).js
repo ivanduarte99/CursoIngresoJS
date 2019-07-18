@@ -4,13 +4,17 @@ function mostrar()
 	var acumulador=0;
 	var respuesta='si';
 
-	while(respuesta!="si")
+	while(respuesta=="si")
 	{
 		contador++;
 		numero=prompt("Ingrese un número");
 		numero=parseInt(numero);
-		isNaN(numero);
+		while(isNaN(numero))
+		{
+			numero=prompt("No es un número, ingrese un número");
+		}
 		acumulador+=numero;
+		respuesta=prompt("Desea ingresar un número?");
 	}
 
 	document.getElementById('suma').value=acumulador;

@@ -5,7 +5,7 @@ function mostrar()
 
 	while(contador<5)
 	{
-		contador++
+		contador++;
 		numero=prompt("Ingrese un número");
 		numero=parseInt(numero);
 		while(isNaN(numero))
@@ -14,7 +14,7 @@ function mostrar()
 		}
 		acumulador+=numero;
 	}
-
+	
 	document.getElementById('suma').value=acumulador;
 	document.getElementById('promedio').value=acumulador/5;
 }//FIN DE LA FUNCIÓN
