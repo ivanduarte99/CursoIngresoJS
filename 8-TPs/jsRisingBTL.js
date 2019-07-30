@@ -12,14 +12,14 @@ function ComenzarIngreso ()
     var contador=0;
     var edad;
     var sexo;
-    var estadoCivil;
+    var estadoCivil=0;
     var sueldo;
     var legajo;
     var nacionalidad;
 
     while(contador == 0)//Edad
     {
-        edad=prompt("Ingrese su edad, por favor");
+        edad=prompt("Ingrese su edad (entre 18 y 80 inclusivo)");
         edad=parseInt(edad);
 
         while(isNaN(edad))
@@ -27,51 +27,106 @@ function ComenzarIngreso ()
             edad=prompt("La edad ingresada no es correcta, vuelva a ingresarla");
         }
 
-        if(edad < 81 && edad > 17)
+        if(edad <= 80 && edad >= 18)
         {
             contador++;
         }
     }
 
-    while(sexo != "f" && sexo != "m")//Sexo
+    while(sexo != "F" && sexo != "M")//Sexo
     {
-        sexo=prompt("Ingrese su sexo, por favor (F para femenino y M para masculino)");
+        sexo=prompt("Ingrese su sexo (F para femenino y M para masculino)");
+        sexo=sexo.toUpperCase();
     }
 
-    while(contador==0)//EstadoCivil
+    while(contador == 1)//EstadoCivil
     {
-        estadoCivil=prompt("Ingrese su estado civil (1 para solteros, 2 para casados, 3 para divorciados y 4 para viudos)");
-        estadoCivil=parseInt(estadoCivil);
-
-        while(isNaN(estadoCivil))
-        {
-            estadoCivil=prompt("Estado civil no válido, (1 para solteros, 2 para casados, 3 para divorciados y 4 para viudos)");
-        }
+        estadoCivil=prompt("Ingrese su estado civil (1-soltero/a, 2-casado/a, 3-divorciado/a y 4-viudo/a)");
 
         switch(estadoCivil)
         {
             case '1':
-                contador++;
+                contador--;
                 estadoCivil="Soltero/a";
                 break;
             case '2':
-                contador++;
+                contador--;
                 estadoCivil="Casado/a";
                 break;
             case '3':
-                contador++;
+                contador--;
                 estadoCivil="Divorciado/a";
                 break;
             case '4':
-                contador++;
+                contador--;
                 estadoCivil="Viudo/a";
                 break;
             default:
-                alert("Estado civil inválido, intenténtelo nuevamente");
+                alert("Estado civil inválido, inténtelo de nuevo");
         }
     }
 
+    while(contador == 0)//Sueldo
+    {
+        sueldo=prompt("Ingrese su sueldo (No menor a 8000)");
+        sueldo=parseInt(sueldo);
 
+        while(isNaN(sueldo))
+        {
+            sueldo=prompt("El sueldo ingresado no es correcto, vuelva a ingresarlo");
+        }
+
+        if(sueldo >= 8000)
+        {
+            contador++;
+        }else
+        {
+            alert("Sueldo no válido, intentelo de nuevo");
+        }
+    }
+
+    while(contador == 1)//Legajo
+    {
+        legajo=prompt("Ingrese un número de 4 digitos sin ceros en la izquierda");
+        legajo=parseInt(legajo);
+        digitos=legajo.toString().length;
+
+        if(digitos == 4)
+        {
+            contador--;
+        }else
+        {
+            alert("Número inválido, intentelo de nuevo");
+        }
+
+    }
+
+    while(contador == 0)//Nacionalidad
+    {
+        nacionalidad=prompt("Ingrese su nacionalidad (A-Argentino/a, E-Extranjero/a o N-Nacionalizado/a)");
+        nacionalidad=nacionalidad.toUpperCase();
+
+        switch(nacionalidad)
+        {
+            case 'A':
+                contador++;
+                nacionalidad="Argentino/a";
+                break;
+
+            case 'E':
+                contador++;
+                nacionalidad="Extranjero/a";
+                break;
+
+            case 'N':
+                contador++;
+                nacionalidad="Nacionalizado/a";
+                break;
+                
+            default:
+                alert("Nacionalidad inválida, inténtelo de nuevo");
+        }
+    }
 
     document.getElementById('Edad').value=edad;
     document.getElementById('Sexo').value=sexo;
