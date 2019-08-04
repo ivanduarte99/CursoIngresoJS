@@ -1,6 +1,7 @@
 function mostrar()
 {
     var contador = 0;
+    var cantidadPositivos = 0;
     var cantidadPares = 0;
     var cantidadImpares = 0;
     var cantidadCeros = 0;
@@ -11,6 +12,8 @@ function mostrar()
     var numeroMayor;
     var letraMenor;
     var letraMayor;
+    var informeMinimo;
+    var informeMaximo;
 
     while(respuesta == "si")
     {
@@ -42,12 +45,17 @@ function mostrar()
 
         if (numero > 0)
         {
+            cantidadPositivos++;
+        }
+
+        if (numero > 0)
+        {
             sumaPositivos += numero;
         }
 
         if (numero < 0)
         {
-            sumaNegativos += numero;
+            sumaNegativos =+ numero;
         }
 
         if (contador == 1)
@@ -62,25 +70,24 @@ function mostrar()
         {
             numeroMenor = numero;
             letraMenor = letra;
-            informeMinimo = numeroMenor + ", " + letraMenor;
         }
 
         if (numero > numeroMayor)
         {
             numeroMayor = numero;
             letraMayor = letra;
-            informeMaximo = numeroMayor + ", " + letraMayor;
         }
 
         respuesta = prompt("Desea ingresar un número?");
     }
 
-    promedioPositivos = sumaPositivos / contador;
+    promedioPositivos = sumaPositivos / cantidadPositivos;
 
     console.log("Cantidad de números pares: " + cantidadPares);
     console.log("Cantidad de números impares: " + cantidadImpares);
     console.log("Cantidad de ceros: " + cantidadCeros);
     console.log("Promedio de los números positivos: " + promedioPositivos);
     console.log("Suma de todos los números negativos: " + sumaNegativos);
-    console.log("Dato con valor mayor: " + informeMaximo + " y dato de menor valor: " + informeMinimo); 
+    console.log("Número menor: " + numeroMenor + " de letra: " + letraMenor);
+    console.log("Número mayor: " + numeroMayor + " de letra: " +letraMayor);
 }
